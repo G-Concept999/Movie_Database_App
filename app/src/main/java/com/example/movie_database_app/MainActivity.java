@@ -49,8 +49,9 @@ public class MainActivity extends AppCompatActivity {
         loadMoviesData();
 
         // Display database name and slogan
-        textViewDatabase.setText("Movie Database");
-        textViewDatabaseSlogan.setText("All your movies in one place");
+        setDatabaseInfo();
+
+
     }
 
     /**
@@ -92,5 +93,10 @@ public class MainActivity extends AppCompatActivity {
         // Create and set adapter
         MovieAdapter movieAdapter = new MovieAdapter(movies);
         movieRecyclerView.setAdapter(movieAdapter);
+    }
+
+    private void setDatabaseInfo() {
+        textViewDatabase.setText("Movie Database");
+        textViewDatabaseSlogan.setText("All your movies in one place");
     }
 }
