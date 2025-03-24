@@ -48,9 +48,9 @@ public class JsonUtil {
             }
         } catch (JSONException e) {
             Log.e(TAG, "Error parsing JSON", e);
+            throw e;
         }
 
-        System.out.println("Movie List: " + movieList);
         return movieList;
     }
 
