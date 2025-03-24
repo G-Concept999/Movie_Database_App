@@ -42,6 +42,10 @@ public class MainActivity extends AppCompatActivity {
 
         // Load menu data
         loadMoviesData();
+
+        // Display database name and slogan
+        textViewDatabase.setText("Movie Database");
+        textViewDatabaseSlogan.setText("All your movies in one place");
     }
 
     /**
@@ -64,10 +68,6 @@ public class MainActivity extends AppCompatActivity {
         try {
             // Load movies data from JSON file
             List<Movie> movies = JsonUtil.loadMovies(this);
-
-            // Display database name and slogan
-            textViewDatabase.setText("Movie Database");
-            textViewDatabaseSlogan.setText("All your movies in one place");
 
             // Create and set adapter
             MovieAdapter movieAdapter = new MovieAdapter(this, movies);
