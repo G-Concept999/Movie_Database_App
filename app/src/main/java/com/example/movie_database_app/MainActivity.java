@@ -28,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
 
     private List<Movie> movies;
 
+    private MovieAdapter movieAdapter;
+
     // Constants
     private static final String TAG = "MainActivity";
 
@@ -77,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         movieRecyclerView.setHasFixedSize(true);
 
         // Create and set adapter
-        MovieAdapter movieAdapter = new MovieAdapter(movies);
+        movieAdapter = new MovieAdapter(movies);
         movieRecyclerView.setAdapter(movieAdapter);
     }
 
