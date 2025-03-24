@@ -51,10 +51,6 @@ public class MovieViewHolder extends RecyclerView.ViewHolder{
         int posterResId = ErrorHandler.getDrawableResourceId(
                 context, movie.getPosterResource(), R.drawable.placeholder_image);
 
-        if (posterResId != 0) {
-            posterImageView.setImageResource(posterResId);
-        } else {
-            posterImageView.setImageResource(R.drawable.placeholder_image);
-        }
+        posterImageView.setImageResource(posterResId);
     }
 }
