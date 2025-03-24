@@ -23,7 +23,10 @@ public class MainActivity extends AppCompatActivity {
 
     // UI components
     private TextView textViewDatabase, textViewDatabaseSlogan;
-    private RecyclerView menuRecyclerView;
+    private RecyclerView movieRecyclerView;
+
+
+    private List<Movie> movies;
 
     // Constants
     private static final String TAG = "MainActivity";
@@ -40,6 +43,8 @@ public class MainActivity extends AppCompatActivity {
         // Initialize UI components
         initializeViews();
 
+        setUpRecyclerView();
+
         // Load menu data
         loadMoviesData();
 
@@ -54,11 +59,8 @@ public class MainActivity extends AppCompatActivity {
     private void initializeViews() {
         textViewDatabase = findViewById(R.id.textViewDatabase);
         textViewDatabaseSlogan = findViewById(R.id.textViewDatabaseSlogan);
-        menuRecyclerView = findViewById(R.id.recyclerViewMenu);
 
-        // Set up RecyclerView
-        menuRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        menuRecyclerView.setHasFixedSize(true);
+
     }
 
     /**
@@ -69,9 +71,7 @@ public class MainActivity extends AppCompatActivity {
             // Load movies data from JSON file
             List<Movie> movies = JsonUtil.loadMovies(this);
 
-            // Create and set adapter
-            MovieAdapter movieAdapter = new MovieAdapter(this, movies);
-            menuRecyclerView.setAdapter(movieAdapter);
+
 
         } catch (Exception e) {
             Log.e(TAG, "Error loading movies data", e);
@@ -81,5 +81,16 @@ public class MainActivity extends AppCompatActivity {
                     "Failed to load menu data. Please try again later."
             );
         }
+    }
+
+    private void setUpRecyclerView() {
+        // Set up RecyclerView
+        movieRecyclerView = findViewById(R.id.recyclerViewMovies);
+        movieRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        movieRecyclerView.setHasFixedSize(true);
+
+        // Create and set adapter
+        MovieAdapter movieAdapter = new MovieAdapter(movies);
+        movieRecyclerView.setAdapter(movieAdapter);
     }
 }
