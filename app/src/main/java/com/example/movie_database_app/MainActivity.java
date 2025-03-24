@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     // UI components
     private TextView textViewDatabase, textViewDatabaseSlogan;
-    private RecyclerView movieRecyclerView;
 
+    private RecyclerView movieRecyclerView;
 
     private List<Movie> movies;
 
@@ -37,21 +37,11 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        // Enable Dynamic Colors
-        DynamicColors.applyToActivityIfAvailable(this);
-
-        // Initialize UI components
-        initializeViews();
-
+        DynamicColors.applyToActivityIfAvailable(this); // Enable Dynamic Colors
+        initializeViews();  // Initialize UI components
+        loadMoviesData();   // Load movies data
         setUpRecyclerView();
-
-        // Load menu data
-        loadMoviesData();
-
-        // Display database name and slogan
-        setDatabaseInfo();
-
-
+        setDatabaseInfo();  // Display database name and slogan
     }
 
     /**
@@ -60,8 +50,6 @@ public class MainActivity extends AppCompatActivity {
     private void initializeViews() {
         textViewDatabase = findViewById(R.id.textViewDatabase);
         textViewDatabaseSlogan = findViewById(R.id.textViewDatabaseSlogan);
-
-
     }
 
     /**
@@ -70,9 +58,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadMoviesData() {
         try {
             // Load movies data from JSON file
-            List<Movie> movies = JsonUtil.loadMovies(this);
-
-
+            movies = JsonUtil.loadMovies(this);
 
         } catch (Exception e) {
             Log.e(TAG, "Error loading movies data", e);
