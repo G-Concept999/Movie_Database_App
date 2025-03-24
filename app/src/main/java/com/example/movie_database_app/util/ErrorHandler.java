@@ -26,41 +26,26 @@ public class ErrorHandler {
      * @param fallbackMessage Default message if error type isn't specifically handled
      * @return true if the error was handled, false otherwise
      */
-    public static boolean handleError(@NonNull Context context, @Nullable Throwable throwable, String fallbackMessage) {
-        if (throwable == null) {
-            showError(context, fallbackMessage);
-            return true;
-        }
-
-        Log.e(TAG, "Error occurred: " + throwable.getMessage(), throwable);
-
+    public static void handleError(@NonNull Context context, @Nullable Throwable throwable, String fallbackMessage) {
         // Handle specific error types
         if (throwable instanceof FileNotFoundException) {
             showError(context, "Required file was not found. Please reinstall the app.");
-            return true;
         } else if (throwable instanceof JSONException) {
-            showError(context, "Error reading menu data. Data format is invalid.");
-            return true;
+            showError(context, "Error reading movies data. Data format is invalid.");
         } else if (throwable instanceof IOException) {
-            showError(context, "Error accessing menu data. Please try again.");
-            return true;
+            showError(context, "Error accessing movies data. Please try again.");
         } else if (throwable instanceof Resources.NotFoundException) {
             showError(context, "Required resource was not found. Please reinstall the app.");
-            return true;
         } else if (throwable instanceof NullPointerException) {
             showError(context, "An unexpected error occurred. Please try again.");
-            return true;
         } else if (throwable instanceof IndexOutOfBoundsException) {
             showError(context, "Invalid data index. Please report this issue.");
-            return true;
         } else if (throwable instanceof IllegalArgumentException) {
             showError(context, "Invalid operation. Please report this issue.");
-            return true;
         }
 
         // Use fallback for unhandled exceptions
         showError(context, fallbackMessage);
-        return false;
     }
 
     /**
@@ -70,20 +55,6 @@ public class ErrorHandler {
      */
     public static void showError(@NonNull Context context, String message) {
         Toast.makeText(context, message, Toast.LENGTH_LONG).show();
-    }
-
-    /**
-     * Logs an error without showing a user-facing message
-     * @param tag The tag to use for logging
-     * @param message The message to log
-     * @param throwable The exception that occurred (optional)
-     */
-    public static void logError(String tag, String message, @Nullable Throwable throwable) {
-        if (throwable != null) {
-            Log.e(tag, message, throwable);
-        } else {
-            Log.e(tag, message);
-        }
     }
 
     /**
