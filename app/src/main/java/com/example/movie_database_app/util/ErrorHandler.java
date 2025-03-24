@@ -24,7 +24,6 @@ public class ErrorHandler {
      * @param context The context to show toast messages
      * @param throwable The exception that occurred
      * @param fallbackMessage Default message if error type isn't specifically handled
-     * @return true if the error was handled, false otherwise
      */
     public static void handleError(@NonNull Context context, @Nullable Throwable throwable, String fallbackMessage) {
         // Handle specific error types
