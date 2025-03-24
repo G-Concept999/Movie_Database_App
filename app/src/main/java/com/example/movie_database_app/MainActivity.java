@@ -25,9 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private TextView textViewDatabase, textViewDatabaseSlogan;
     private RecyclerView menuRecyclerView;
 
-    // Data
-    private MovieAdapter movieAdapter;
-
     // Constants
     private static final String TAG = "MainActivity";
 
